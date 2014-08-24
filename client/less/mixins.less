@@ -1,0 +1,74 @@
+.font-source-sans-pro {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.box-sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearing {
+  clear: both;
+}
+
+.disable-user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.tokens {
+  .box-sizing;
+  width: 100%;
+  padding-top: 5px;
+  padding-left: 5px;
+  margin: 0;
+
+  border: 1px solid @CLOUDS;
+
+  li {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 7.5px 10px;
+    background: @CLOUDS;
+    list-style-type: none;
+
+    border: 1px solid @SILVER;
+    border-radius: 2.5px;
+
+    cursor: pointer;
+
+    .remove {
+      margin-left: 2.5px;
+      padding-left: 5px;
+    }
+
+    &:hover {
+      color: lighten(@page_background_color, 5%);
+      background: @ASBESTOS;
+      border: 1px solid @CLOUDS;
+    }
+
+    .close-button {
+      i {
+        &:hover {
+          color: @ALIZARIN;
+        }
+      }
+    }
+  }
+
+  .token-add {
+    i {
+      float: left;
+      margin-top: 2.5px;
+      margin-right: 2.5px;
+    }
+  }
+}

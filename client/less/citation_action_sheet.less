@@ -1,0 +1,176 @@
+#citation.action-sheet {
+  width: 700px;
+
+  .search_filters {
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .no-item {
+    text-align: center;
+    padding-top: 50px;
+
+    font-style: italic;
+
+    .add-button {
+      margin: 10px auto;
+      width: 175px;
+      font-style: normal;
+      font-weight: 600;
+      border-radius: 3px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .item_list {
+    overflow-y: scroll;
+    margin: 10px auto;
+    width: 90%;
+    height: 300px;
+
+    border: 1px solid darken(@CLOUDS, 10%);
+
+    .item {
+      position: relative;
+      padding: 1.5em 1em 1em 1em;
+
+      border-bottom: 1px solid @CLOUDS;
+
+      cursor: pointer;
+
+      div.source_type {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        margin: 0px auto;
+
+        color: @MIDNIGHT_BLUE;
+        font-size: 0.75em;
+        font-weight: 600;
+        text-align: left;
+        letter-spacing: 1px;
+
+        span {
+          background: @ASBESTOS;
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+
+          color: #ffffff;
+          border-bottom-right-radius: 5px;
+          text-transform: uppercase;
+        }
+      }
+
+      div.content {
+        float: left;
+        width: 97%;
+
+        span.title,
+        span.author,
+        span.book_title,
+        span.journal,
+        span.organisation_institution,
+        span.url,
+        span.number,
+        span.nationality,
+        span.year,
+        span.thesis_level,
+        span.note {
+          display: block;
+        }
+
+        span.title,
+        span.number {
+          font-weight: 600;
+        }
+
+        span.author,
+        span.nationality {
+          font-style: italic;
+        }
+
+        span.year {
+
+        }
+
+        span.url {
+          a {
+            color: @MIDNIGHT_BLUE;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      div.actions {
+        float: right;
+        width: 3%;
+
+        color: @SILVER;
+        text-align: center;
+
+        i {
+          display: block;
+          margin-bottom: 5px;
+
+          &.fa-times {
+            &:hover {
+              color: @ALIZARIN;
+            }
+          }
+
+          &.fa-edit {
+            &:hover {
+              color: @MIDNIGHT_BLUE;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        background: fade(@PETER_RIVER, 10%);
+      }
+    }
+
+    .item.selected {
+      background: @PETER_RIVER;
+
+      color: #ffffff;
+
+      &:hover {
+        background: @PETER_RIVER;
+      }
+
+      div.source_type {
+        span {
+          background: @CLOUDS;
+          color: @MIDNIGHT_BLUE;
+        }
+      }
+
+      div.content {
+        span.url {
+          a {
+            color: #ffffff;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      div.actions {
+        color: @CLOUDS;
+
+        i {
+          &.fa-edit {
+            &:hover {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,41 @@
+<div id="image-upload" class="action-sheet" ng-controller="ImageUploadController">
+    <h3 class="title" ng-if="!(sheetData.editing)">Insert Image</h3>
+    <h3 class="title" ng-if="(sheetData.editing)">Edit Image Details</h3>
+
+    <form ng-submit="(sheetData.editing)?done($event):insert($event)">
+        <div class="holder">
+            <img ng-src="{{imgURL}}" />
+        </div>
+
+        <div class="field required" ng-class="{error: error.caption}">
+            <label>Caption</label>
+            <input type="text" ng-model="caption" />
+        </div>
+
+        <!-- div class="field short" ng-class="{error: error.placement}">
+            <label>Preferred Placement</label>
+            <select ng-model="placement">
+                <option value="auto">Auto</option>
+                <option value="top">Top</option>
+                <option value="bottom">Bottom</option>
+            </select>
+        </div>
+
+        <div class="field short" ng-class="{error: error.width}">
+            <label>Width</label>
+            <select ng-model="width">
+                <option value="auto">Auto</option>
+                <option value="full">Full</option>
+                <option value="half">Half</option>
+            </select>
+        </div>
+
+        <div class="clearing"></div  -->
+
+        <div class="buttons">
+            <button ng-click="cancel()">Cancel</button>
+            <input ng-if="!(sheetData.editing)" class="good" type="submit" value="Insert" />
+            <input ng-if="(sheetData.editing)" class="good" type="submit" value="Done" />
+        </div>
+    </form>
+</div>

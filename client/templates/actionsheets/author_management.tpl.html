@@ -1,0 +1,63 @@
+<div id="author-management" class="action-sheet" ng-controller="AuthorManagementController">
+    <h3 class="title" ng-show="(sheetData.editing === false)">Add Author</h3>
+    <h3 class="title" ng-show="(sheetData.editing === true)">Edit Author</h3>
+
+    <form ng-submit="submit()">
+        <div class="left">
+            <div class="field">
+                <label>Name</label>
+                <input type="text" ng-model="author.name" />
+                <span class="tip"></span>
+                <span class="error">{{error.name}}</span>
+            </div>
+
+            <div class="field">
+                <label>Affiliation</label>
+                <textarea rows="3" ng-model="author.affiliation"></textarea>
+                <span class="tip"></span>
+            </div>
+
+            <div class="field">
+                <label>Email</label>
+                <input type="email" ng-model="author.email" />
+                <span class="tip"></span>
+            </div>
+
+            <div class="field">
+                <label>Phone</label>
+                <input type="phone" ng-model="author.phone" />
+                <span class="tip"></span>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="field">
+                <div class="pic-placeholder"></div>
+            </div>
+            <div class="field">
+                <label>Short Biography</label>
+                <textarea rows="5" ng-model="author.biography"></textarea>
+            </div>
+        </div>
+
+        <div class="clearing"></div>
+
+        <div class="field">
+            <label>Thanks</label>
+            <textarea rows="2" ng-model="author.thanks"></textarea>
+        </div>
+
+        <div class="buttons" ng-show="(sheetData.editing === false)">
+            <button ng-click="cancel()">Cancel</button>
+            <input type="reset" value="Reset" ng-click="reset()" />
+            <input class="good" type="submit" value="Add" />
+        </div>
+
+        <div class="buttons" ng-show="(sheetData.editing === true)">
+            <button ng-click="cancel()">Cancel</button>
+            <input type="reset" value="Reset" ng-click="reset()" />
+            <input class="good" type="submit" value="Done" />
+        </div>
+    </form>
+
+</div>

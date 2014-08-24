@@ -1,0 +1,17 @@
+{
+  "name": "typeset",
+  "version": "0.0.0",
+  "description": "Typeset.io server side to compose a simple research paper.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Santhos Baala RS",
+  "license": "ISC",
+  "dependencies": {
+    "dom-js": "0.0.9",
+    "express": "~3.4.8",
+    "nimble": "0.0.2",
+    "sanitize-html": "1.1.3"
+  }
+}

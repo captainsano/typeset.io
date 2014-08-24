@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html charset="utf-8">
+    <head>
+        <title>typeset.io</title>
+
+        <script src="lib/js/jquery/jquery-2.1.0.min.js"></script>
+        <script src="lib/js/lodash/lodash.underscore.js"></script>
+        <script src="lib/js/underscore/underscore.string.min.js"></script>
+
+        <script src="lib/js/angular/angular.js"></script>
+        <script src="lib/js/angular/addons/restangular.js"></script>
+        <script src="lib/js/angular/addons/angular-route.js"></script>
+        <script src="lib/js/angular/addons/angular-sanitize.js"></script>
+        <script src="lib/js/angular/addons/angular-animate.js"></script>
+
+        <link href="lib/fonts/source_sans_pro/stylesheet.css" rel="stylesheet" />
+        <link href="lib/fonts/font_awesome/font-awesome.less" rel="stylesheet/less" />
+
+        <link href="lib/css/normalize/normalize.css" rel="stylesheet" />
+        <link href="less/main.less" rel="stylesheet/less" />
+
+        <script>less = {logLevel: 0};</script>
+        <script src="lib/js/less/less-1.6.1.min.js"></script>
+    </head>
+    <body ng-app="typeset" ng-cloak>
+        <div class="page-wrapper">
+            <div id="header" class="container">
+                <div class="logo">typeset.io</div>
+                <div class="buttons" ng-controller="HeaderButtonsController">
+                    <div class="button"
+                         title="Edit the Document"
+                         ng-click="loadEditor()"
+                         ng-hide="(currentLocation === '/editor')">
+                        <i class="fa fa-lg fa-edit"></i>
+                    </div>
+                    <div class="split-button">
+                        <button class="good" ng-click="compose()">Compose</button><button class="good" ng-click="openComposePreferences()"><i class="fa fa-1x fa-gear"></i></button>
+                    </div>
+                    <div class="button sample-data" ng-click="loadSampleData()">
+                        <i class="fa fa-lg fa-rocket"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-container" class="container" ng-view></div>
+        </div>
+
+        <div ng-controller="ActionSheetController">
+            <div id="action-sheet-container"
+                 class="page-wrapper action-sheet-container"
+                 ng-if="(sheets.length > 0)">
+                <div class="action-sheet-repeat-item" ng-repeat="sheet in sheets" ng-init="sheetData = sheet.data">
+                    <div class="background"></div>
+                    <div class="action-sheet-pinner container" ng-include="sheet.templateURL"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/api/domselection.js"></script>
+
+        <!-- Angular LIB includes -->
+        <script src="lib/js/angular/addons/elastic.js"></script><!-- for msd-elastic directive -->
+        <script src="js/modules.js"></script>
+
+        <!-- controllers -->
+        <script src="js/controllers/editor.js"></script>
+        <script src="js/controllers/actionsheet.js"></script>
+        <script src="js/controllers/textprompt.js"></script>
+        <script src="js/controllers/citation.js"></script>
+        <script src="js/controllers/authormanagement.js"></script>
+        <script src="js/controllers/textareacontainercontroller.js"></script>
+        <script src="js/controllers/headerbuttons.js"></script>
+        <script src="js/controllers/composepreferences.js"></script>
+        <script src="js/controllers/compose.js"></script>
+        <script src="js/controllers/composeprogress.js"></script>
+        <script src="js/controllers/imageupload.js"></script>
+
+        <!-- directives -->
+        <script src="js/directives/rpFocussable.js"></script>
+        <script src="js/directives/textareacontainer.js"></script>
+        <script src="js/directives/richtextarea.js"></script>
+        <script src="js/directives/dragdirectives.js"></script>
+
+        <!-- services -->
+        <script src="js/services/uuid.js"></script>
+        <script src="js/services/actionsheet.js"></script>
+        <script src="js/services/paper.js"></script>
+        <script src="js/services/bibliography.js"></script>
+        <script src="js/services/compose_preferences.js"></script>
+        <script src="js/services/compose.js"></script>
+        <script src="js/services/filereader.js"></script>
+
+        <script src="js/app.js"></script>
+        <script src="js/routes.js"></script>
+
+        <script src="js/animations.js"></script>
+    </body>
+</html>

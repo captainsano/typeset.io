@@ -1,0 +1,126 @@
+<div id="citation" class="action-sheet" ng-controller="CitationController">
+    <h3 class="title" ng-show="(sheetData.editing === false)">Add Reference</h3>
+    <h3 class="title" ng-show="(sheetData.editing === true)">Edit Reference</h3>
+
+    <div class="search_filters">
+        <i class="fa fa-1x fa-search"></i>&nbsp;
+        <input type="search" ng-model="search.$" />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label>Source Type:&nbsp;</label>
+        <select ng-model="source_type">
+            <option value="">All</option>
+            <option value="article">Article</option>
+            <option value="book">Book</option>
+            <option value="inproceedings">Proceeding/Conference</option>
+            <option value="mastersthesis">Master's Thesis</option>
+            <option value="phdthesis">PhD Thesis</option>
+            <option value="techreport">Technical Report</option>
+            <option value="electronic">Electronic (Website)</option>
+            <option value="patent">Patent</option>
+            <option value="periodical">Periodical (Journal/Magazine)</option>
+            <option value="standard">Standard</option>
+            <option value="manual">Manual</option>
+            <option value="unpublished">Unpublished</option>
+            <option value="misc">Miscellaneous</option>
+        </select>
+    </div>
+
+    <div class="item_list">
+        <div class="no-item" ng-if="collection.length === 0">
+            Your bibliography collection is empty!
+            <div class="add-button" ng-click="addNewItem()">Add a New Item</div>
+        </div>
+        <div ng-repeat="item in collection | filter:{type: source_type} | filter:search">
+            <div class="item" ng-class="(selectedItem === item.id)?'selected':''" ng-click="selectItem(item.id)">
+                <div class="source_type"><span>{{item.type}}</span></div>
+                <div class="content" ng-switch="item.type">
+                    <div ng-switch-when="article">
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.title}}</span>
+                    </div>
+                    <div ng-switch-when="book">
+                        <span class="author">{{item.authors.join(', ') || item.editors.join(', ')}}</span><!-- Display Authors or Editors -->
+                        <span class="title">{{item.title}}</span>
+                    </div>
+                    <div ng-switch-when="inproceedings">
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.title}}</span>
+                        <span>{{item.booktitle}}</span>
+                    </div>
+                    <div ng-switch-when="mastersthesis">
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.title}}</span>
+                        <span>{{item.school}}</span>
+                    </div>
+                    <div ng-switch-when="phdthesis">
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.title}}</span>
+                        <span>{{item.school}}</span>
+                    </div>
+                    <div ng-switch-when="techreport">
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.title}}</span>
+                        <span>{{item.institution}}</span>
+                    </div>
+                    <div ng-switch-when="electronic">
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.title}}</span>
+                    </div>
+                    <div ng-switch-when="patent">
+                        <span class="title">{{item.title}}</span>
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span class="title">{{item.nationality}} - {{item.number}}</span>
+                    </div>
+                    <div ng-switch-when="periodical">
+                        <span class="title">{{item.title}}</span>
+                        <span class="author">{{item.editors.join(', ')}}</span>
+                        <span>{{item.year}}</span>
+                    </div>
+                    <div ng-switch-when="standard">
+                        <span>{{item.organization}}</span>
+                        <span class="title">{{item.title}}</span>
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                    </div>
+                    <div ng-switch-when="manual">
+                        <span>{{item.organization}}</span>
+                        <span class="title">{{item.title}}</span>
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                    </div>
+                    <div ng-switch-when="unpublished">
+                        <span class="title">{{item.title}}</span>
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                    </div>
+                    <div ng-switch-when="misc">
+                        <span class="title">{{item.title}}</span>
+                        <span class="author">{{item.authors.join(', ')}}</span>
+                        <span>{{item.howpublished}} - {{item.year}}</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <!-- i class="fa fa-1x fa-times"></i -->
+                    <i class="fa fa-1x fa-edit" ng-click="edit(item.id, $event)"></i>
+                </div>
+                <div class="clearing"></div>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <div>
+            <div class="buttons left">
+                <button class="good" ng-click="addNewItem()">Add a New Item</button>
+            </div>
+            <div class="buttons" ng-show="(sheetData.editing === false)">
+                <button ng-click="cancel()">Cancel</button>
+                <input class="good" type="submit" value="Add" ng-click="submit()" />
+            </div>
+            <div class="buttons" ng-show="(sheetData.editing === true)">
+                <button class="bad" ng-click="remove()">Remove</button>
+                <button ng-click="cancel()">Cancel</button>
+                <input class="good" type="submit" value="Done" ng-click="submit()" />
+            </div>
+            <div class="clearing"></div>
+        </div>
+    </form>
+
+</div>

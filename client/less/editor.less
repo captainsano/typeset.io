@@ -1,0 +1,240 @@
+#editor {
+  padding-top: 25px;
+  color: @MIDNIGHT_BLUE;
+
+  textarea,
+  input {
+    .box-sizing;
+    width: 100%;
+
+    -webkit-transition-property: border;
+    -webkit-transition-duration: 0.20s;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  .field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .paper_title {
+    padding: 10px;
+
+    font-size: 1.25em;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .abstract {
+    font-weight: 600;
+  }
+
+  .separator {
+    margin: 25px auto;
+    width: 50%;
+    height: 1px;
+    background: @CLOUDS;
+  }
+
+  .temp-button {
+    display: block;
+    .box-sizing;
+    margin: 15px auto;
+    padding: 10px 5px;
+
+    color: @SILVER;
+    text-align: center;
+    border-radius: 2.5px;
+
+    border: 1px dashed @SILVER;
+    cursor: pointer;
+
+    &:hover {
+      color: @WET_ASPHALT;
+      border: 1px dashed @WET_ASPHALT;
+    }
+
+    &.hoverable {
+      opacity: 0.75;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .textarea-container {
+    position: relative;
+    border: 1px solid @CLOUDS;
+
+    input.title {
+      background: transparent;
+      border-bottom: none;
+      font-size: 1.25em;
+      font-weight: 600;
+      padding: 10px;
+      border: none;
+
+      width: 97.5%;
+    }
+
+    div.buttons {
+      position: absolute;
+      top: 5px; right: 5px;
+
+      i.fa {
+        color: @SILVER;
+        cursor: pointer;
+
+        &:hover {
+          color: @ALIZARIN;
+        }
+      }
+    }
+
+    div.action-buttons {
+      padding: 0px 10px 0px 10px;
+
+      i {
+        padding-left: 5px;
+        padding-right: 5px;
+
+        color: @CLOUDS;
+
+        cursor: pointer;
+      }
+    }
+
+    div.action-buttons.active {
+      i {
+        color: darken(@SILVER, 10%);
+
+        &:hover {
+          color: @WET_ASPHALT;
+        }
+      }
+    }
+
+    .add-sub-section-button {
+      width: 95%;
+    }
+
+    .subsection {
+      margin: 15px auto;
+      width: 95%;
+
+      .title {
+        font-size: 1.1em;
+        font-style: italic;
+      }
+
+      .add-sub-sub-section-button {
+        width: 95%;
+      }
+
+      .subsubsection {
+        margin: 15px auto;
+        width: 95%;
+
+        .title {
+          font-size: 1.0em;
+          font-weight: 600;
+          font-style: normal;
+        }
+      }
+    }
+
+    .rich-textarea {
+      .box-sizing;
+      position: relative;
+      width: 100%;
+      height: auto;
+
+      div.placeholder {
+        position: absolute;
+        padding: 10px;
+
+        line-height: 1.5em;
+        font-weight: 400;
+        white-space: pre;
+
+        color: @SILVER;
+
+        pointer-events: none;
+      }
+
+      div.textarea {
+        padding: 10px;
+
+        min-height: 5em;
+
+        line-height: 1.5em;
+        font-weight: 400;
+        text-align: justify;
+
+        border: none;
+        background: transparent;
+
+        // Acts as paragraph division
+        div, p {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}
+
+/*-------- Directives --------*/
+#editor {
+  .textarea-container.rp-focussed {
+    background: #ffffff!important;
+    border: 1px solid @CONCRETE!important;
+  }
+
+  .textarea-container {
+    .images {
+      padding: 5px;
+
+      .image-container {
+        float: left;
+        position: relative;
+        margin: 10px;
+        padding: 5px;
+
+        cursor: pointer;
+
+        img {
+          box-sizing: border-box;
+          max-width: 100%;
+          width: 75px;
+          height: 75px;
+          background-position: center center;
+          background-size: cover;
+
+          &:hover {
+            box-shadow: 0px 0px 3px #454545;
+          }
+        }
+
+        .remove-button {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          color: @CLOUDS;
+          font-size: 1.2em;
+          text-shadow: 0px 0px 2px #000000;
+
+          opacity: 0.25;
+
+          &:hover {
+            color: @ALIZARIN;
+            opacity: 1.0;
+          }
+        }
+      }
+    }
+  }
+}

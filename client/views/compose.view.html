@@ -1,0 +1,12 @@
+<div id="compose" class="compose-view">
+    <div class="controls-container">
+        <i class="fa fa-1x fa-search-plus button"></i>&nbsp;&nbsp;
+        <i class="fa fa-1x fa-search-minus button"></i>&nbsp;&nbsp;
+        <span class="button text"><i class="fa fa-1x fa-save"></i>&nbsp;PDF</span>
+    </div>
+    <div class="preview-container">
+        <div class="images">
+            <img ng-src="{{baseURL}}/images/{{page}}" ng-repeat="page in data" />
+        </div>
+    </div>
+</div>

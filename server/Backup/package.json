@@ -1,0 +1,15 @@
+{
+  "name": "rpapr_node",
+  "version": "0.0.0",
+  "description": "The server-side of RPAPR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Santhos Baala RS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~3.4.8",
+    "sanitize-html": "^1.1.3"
+  }
+}

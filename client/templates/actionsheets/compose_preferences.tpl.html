@@ -1,0 +1,91 @@
+<div id="compose-preferences" class="action-sheet" ng-controller="ComposePreferencesController">
+    <h3 class="title">Compose Preferences</h3>
+
+    <form>
+        <div class="field inline">
+            <label>Text Size: </label>
+            <select ng-model="composePreferences.textSize">
+                <option value="auto">Auto</option>
+                <option value="9pt">9 pt</option>
+                <option value="10pt">10 pt</option>
+                <option value="11pt">11 pt</option>
+                <option value="12pt">12 pt</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Draft Mode:</label>
+            <select ng-model="composePreferences.draftMode">
+                <option value="draft">Exclude Images and Insertions</option>
+                <option value="draftcls">Include Images and Insertions</option>
+                <option value="draftclsnofoot">Include Images and Insertions. Exclude "DRAFT" markings</option>
+                <option value="final">Not a Draft - Prepare finalized document</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Document Mode:</label>
+            <select ng-model="composePreferences.documentMode">
+                <option value="conference">Conference</option>
+                <option value="journal">Journal</option>
+                <option value="technote">Correspondence (Technote)</option>
+                <option value="peerreview">Peer Review</option>
+                <option value="peerreviewca">Peer Review - Include Author Information</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Special Mode:</label>
+            <select ng-model="composePreferences.specialMode">
+                <option value="none">None</option>
+                <option value="compsoc">Computer Society</option>
+                <option value="transmag">Transactions on Magnetics</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Paper Size:</label>
+            <select ng-model="composePreferences.paperSize">
+                <option value="auto">Auto</option>
+                <option value="a4">A4</option>
+                <option value="letter">Letter</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Printable Sides: </label>
+            <input id="paper_sides_one" type="radio" name="sides" value="one" ng-model="composePreferences.sides" />
+            <label for="paper_sides_one">One Side</label>
+            &nbsp;&nbsp;
+            <input id="paper_sides_two" type="radio" name="sides" value="two" ng-model="composePreferences.sides" />
+            <label for="paper_sides_two">Two Side</label>
+        </div>
+
+        <div class="field inline">
+            <label>Columns:</label>
+            <select ng-model="composePreferences.columns">
+                <option value="0">Auto</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Appendices Numbering:</label>
+            <select ng-model="composePreferences.appendicesNumbering">
+                <option value="auto">Auto</option>
+                <option value="roman">Roman</option>
+            </select>
+        </div>
+
+        <div class="field inline">
+            <label>Captions:</label>
+            <input type="checkbox" ng-model="composePreferences.captions" />
+        </div>
+
+        <div class="buttons">
+            <button ng-click="cancel()">Cancel</button>
+            <input class="good" type="submit" value="Done" ng-click="submit()" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,159 @@
+<div id="editor" class="inner-wrapper">
+    <textarea class="paper_title field"
+              rows="1"
+              placeholder="title"
+              msd-elastic
+              ng-model="paper.title"></textarea>
+
+    <ul class="authors tokens field">
+        <li class="author token" ng-repeat="author in paper.authors" ng-click="editAuthor($index)">{{author.name}}&nbsp;<span class="close-button" ng-click="removeAuthor($index)"><i class="fa fa-1x fa-times remove"></i></span></li>
+        <li class="author-add token-add" ng-click="addAuthor()"><i class="fa fa-1x fa-plus"></i>&nbsp;Add Author</li>
+    </ul>
+
+    <textarea class="abstract field"
+              rows="3"
+              placeholder="abstract"
+              msd-elastic
+              ng-model="paper.abstract"></textarea>
+
+    <input class="index-terms field" type="text" placeholder="index terms [Comma Separated]" ng-model="paper.index_terms" ng-list>
+
+    <textarea class="acknowledgement field"
+              rows="3"
+              placeholder="acknowledgement [Optional]"
+              msd-elastic
+              ng-model="paper.acknowledgement"></textarea>
+
+    <textarea class="financial_support field"
+              rows="3"
+              placeholder="financial support [Optional]"
+              msd-elastic
+              ng-model="paper.financial_support"></textarea>
+
+    <div class="separator"></div>
+
+    <a class="temp-button add-section-button field"
+       ng-show="(paper.sections.length === 0)"
+       ng-click="addSection(0)">
+        <i class="fa fa-1x fa-plus"></i><br/>Create a new section
+    </a>
+
+    <div class="text-container-repeater" ng-repeat="(sectionIdx, section) in paper.sections">
+        <a class="temp-button hoverable add-section-button field"
+           ng-click="addSection(sectionIdx)">
+            <i class="fa fa-1x fa-plus"></i>&nbsp;Create a new section here
+        </a>
+
+        <div class="textarea-container field section rp-focussable-container" ng-dragstart="dragStart($event)" ng-dragover="dragOver($event)" ng-drop="drop($event, section)">
+            <input class="title rp-focussable" type="text" placeholder="section title" ng-model="section.title">
+            <div class="buttons">
+                <i class="fa fa-1x fa-times" title="Remove this section" ng-click="removeSection(sectionIdx)"></i>
+            </div>
+
+            <div class="action-buttons" ng-class="{active: textareaFocussed}">
+                <i class="fa fa-1x fa-external-link" title="Add a reference" ng-mousedown="addCitation(injectItem, cancelCallback)"></i>
+                <i class="fa fa-1x fa-external-link-square" title="Add a resource reference"></i>
+            </div>
+
+            <rich-textarea class="rich-textarea" placeholder="section contents" ng-model="section.contents"></rich-textarea>
+
+            <div class="images">
+                <div class="image-container" ng-repeat="(imageIdx, image) in section.images">
+                    <img style="background-image: url('{{image.data}}')" ng-click="editImage(section, imageIdx)" />
+                    <div class="remove-button" ng-click="removeImage(section, imageIdx)">&times;</div>
+                </div>
+                <div class="clearing"></div>
+            </div>
+
+            <a class="temp-button add-sub-section-button field"
+               ng-show="(section.subsections.length === 0)"
+               ng-click="addSubSection(sectionIdx, 0)">
+                <i class="fa fa-1x fa-plus"></i><br/>Create a new sub-section
+            </a>
+
+            <div class="text-container-repeater" ng-repeat="(subSectionIdx, subsection) in section.subsections">
+                <a class="temp-button hoverable add-sub-section-button field"
+                   ng-click="addSubSection(sectionIdx, subSectionIdx)">
+                    <i class="fa fa-1x fa-plus"></i>&nbsp;Create a new sub-section here
+                </a>
+
+                <div class="textarea-container field subsection rp-focussable-container" ng-dragstart="dragStart($event)" ng-dragover="dragOver($event)" ng-drop="drop($event, subsection)">
+                    <input class="title rp-focussable" type="text" placeholder="subsection title" ng-model="subsection.title">
+                    <div class="buttons">
+                        <i class="fa fa-1x fa-times" title="Remove this sub-section" ng-click="removeSubSection(sectionIdx, subSectionIdx)"></i>
+                    </div>
+
+                    <div class="action-buttons" ng-class="{active: textareaFocussed}">
+                        <i class="fa fa-1x fa-external-link" title="Add a reference" ng-mousedown="addCitation(injectItem, cancelCallback)"></i>
+                        <i class="fa fa-1x fa-external-link-square" title="Add a resource reference"></i>
+                    </div>
+
+                    <rich-textarea class="rich-textarea" placeholder="subsection contents" ng-model="subsection.contents"></rich-textarea>
+
+                    <div class="images">
+                        <div class="image-container" ng-repeat="(imageIdx, image) in subsection.images">
+                            <img style="background-image: url('{{image.data}}')" ng-click="editImage(subsection, imageIdx)" />
+                            <div class="remove-button" ng-click="removeImage(subsection, imageIdx)">&times;</div>
+                        </div>
+                        <div class="clearing"></div>
+                    </div>
+
+                    <a class="temp-button add-sub-sub-section-button field"
+                       ng-show="(subsection.subsubsections.length === 0)"
+                       ng-click="addSubSubSection(sectionIdx, subSectionIdx, 0)">
+                        <i class="fa fa-1x fa-plus"></i><br/>Create a new sub-sub-section
+                    </a>
+
+                    <div class="text-container-repeater" ng-repeat="(subSubSectionIdx, subsubsection) in subsection.subsubsections">
+                        <a class="temp-button hoverable add-sub-sub-section-button field"
+                           ng-click="addSubSubSection(sectionIdx, subSectionIdx, subSubSectionIdx)">
+                            <i class="fa fa-1x fa-plus"></i>&nbsp;Create a new sub-sub-section
+                        </a>
+
+                        <div class="textarea-container field subsubsection rp-focussable-container" ng-dragstart="dragStart($event)" ng-dragover="dragOver($event)" ng-drop="drop($event, subsubsection)">
+                            <input class="title rp-focussable" type="text" placeholder="subsubsection title"  ng-model="subsubsection.title">
+                            <div class="buttons">
+                                <i class="fa fa-1x fa-times" title="Remove this sub-sub-section" ng-click="removeSubSubSection(sectionIdx, subSectionIdx, subSubSectionIdx)"></i>
+                            </div>
+
+                            <div class="action-buttons" ng-class="{active: textareaFocussed}">
+                                <i class="fa fa-1x fa-external-link" title="Add a reference" ng-mousedown="addCitation(injectItem, cancelCallback)"></i>
+                                <i class="fa fa-1x fa-external-link-square" title="Add a resource reference"></i>
+                            </div>
+
+                            <rich-textarea class="rich-textarea" placeholder="subsubsection contents" ng-model="subsubsection.contents"></rich-textarea>
+
+                            <div class="images">
+                                <div class="image-container" ng-repeat="(imageIdx, image) in subsubsection.images">
+                                    <img style="background-image: url('{{image.data}}')" ng-click="editImage(subsubsection, imageIdx)" />
+                                    <div class="remove-button" ng-click="removeImage(subsubsection, imageIdx)">&times;</div>
+                                </div>
+                                <div class="clearing"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="temp-button hoverable add-sub-sub-section-button field"
+                       ng-show="(subsection.subsubsections.length > 0)"
+                       ng-click="addSubSubSection(sectionIdx, subSectionIdx, subsection.subsubsections.length)">
+                        <i class="fa fa-1x fa-plus"></i>&nbsp;Create a new sub-sub-section
+                    </a>
+                </div>
+            </div>
+
+            <a class="temp-button hoverable add-sub-section-button field"
+               ng-show="(section.subsections.length > 0)"
+               ng-click="addSubSection(sectionIdx, section.subsections.length)">
+                <i class="fa fa-1x fa-plus"></i>&nbsp;Create a new sub-section here
+            </a>
+
+        </div>
+    </div>
+
+    <a class="temp-button hoverable add-section-button field"
+       ng-show="(paper.sections.length > 0)"
+       ng-click="addSection(paper.sections.length)">
+        <i class="fa fa-1x fa-plus"></i>&nbsp;Create a new section here
+    </a>
+
+</div>

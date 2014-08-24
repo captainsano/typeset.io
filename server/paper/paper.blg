@@ -1,0 +1,72 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bibFile.bib
+I was expecting an "="---line 23 of file bibFile.bib
+ : booktitle: 
+ :            {e-Science and Grid Computing, IEEE International Conference}
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 31 of file bibFile.bib
+ : booktitle: 
+ :            {Parallel and Distributed Computing, Applications and Technologies, ab09 International Conference}
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 42 of file bibFile.bib
+ : booktitle: 
+ :            {Proceedings of the twelfth international conference on Information and knowledge management}
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty booktitle in ab11
+Warning--empty booktitle in ab12
+Warning--empty booktitle in ab13
+
+Done.
+You've used 15 entries,
+            4039 wiz_defined-function locations,
+            883 strings with 8745 characters,
+and the built_in function-call counts, 6841 in all, are:
+= -- 497
+> -- 99
+< -- 35
++ -- 64
+- -- 14
+* -- 295
+:= -- 1102
+add.period$ -- 23
+call.type$ -- 15
+change.case$ -- 12
+chr.to.int$ -- 96
+cite$ -- 18
+duplicate$ -- 534
+empty$ -- 653
+format.name$ -- 17
+if$ -- 1517
+int.to.chr$ -- 0
+int.to.str$ -- 15
+missing$ -- 111
+newline$ -- 90
+num.names$ -- 7
+pop$ -- 317
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 521
+stack$ -- 0
+substring$ -- 185
+swap$ -- 379
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 15
+warning$ -- 3
+while$ -- 19
+width$ -- 17
+write$ -- 160
+(There were 3 error messages)
